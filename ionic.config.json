@@ -1,0 +1,7 @@
+{
+  "name": "DpWarehouseSystem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
