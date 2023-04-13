@@ -4,58 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" *ngIf="data">
+<ion-content [fullscreen]="true">
   <div class="content-wrapper">
     <ion-item>
       <ion-label>
-        <ion-note [color]="getStateColor(data!.process)"
-          >{{getStateText(data!.process)}}</ion-note
-        >
+        <ion-note>Connect to Warehouse System!</ion-note>
       </ion-label>
-      <div class="page-action">
-        <ion-button color="primary" (click)="startProcess()">Start</ion-button>
-        <ion-button color="danger" (click)="stopProcess()">Stop</ion-button>
-      </div>
+      <ion-button color="primary" (click)="establishConnection()"
+        >Connect</ion-button
+      >
     </ion-item>
-
-    <div class="main-content">
-      <ion-item>
-        <ion-label>
-          <ion-note color="dark"
-            >Available spots in Warehouse:
-            <span>{{data!.numberOfAvailableSpots}}</span></ion-note
-          >
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-note color="dark"
-            >Number of products in Warehouse:
-            <span>{{data!.numberOfProductsInStack}}</span></ion-note
-          >
-        </ion-label>
-      </ion-item>
-
-      <ion-item class="warehouse-info">
-        <ion-label>
-          <h1>Warehouse</h1>
-          <ion-note>Select available spot in Warehouse</ion-note>
-          <p>
-            <ion-chip color="success">Available</ion-chip>
-            <ion-chip disabled="true">Occupied</ion-chip>
-          </p>
-        </ion-label>
-      </ion-item>
-      <div class="chips-wrapper">
-        <ng-container *ngFor="let slot of data!.warehouse">
-          <ion-chip
-            [color]="!slot.isOccupied ? 'success' : 'warn'"
-            [disabled]="slot.isOccupied"
-            (click)="sendValue(slot.value)"
-            >{{slot.value}}</ion-chip
-          >
-        </ng-container>
-      </div>
-    </div>
   </div>
+  <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+    <ng-template>
+      <ion-content class="ion-padding">{{popupMessage}}</ion-content>
+    </ng-template>
+  </ion-popover>
 </ion-content>

@@ -27,6 +27,9 @@ repositories {
     flatDir{
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
+  maven {
+    url "https://repo.eclipse.org/content/repositories/paho-releases/"
+  }
 }
 
 dependencies {
@@ -39,6 +42,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
+  implementation('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
+    exclude module: 'support-v4'
+  }
 }
 
 apply from: 'capacitor.build.gradle'

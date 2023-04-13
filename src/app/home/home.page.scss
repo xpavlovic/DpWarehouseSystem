@@ -25,29 +25,3 @@
 #container a {
   text-decoration: none;
 }
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-  .page-action {
-    display: flex;
-    gap: 16px;
-  }
-  .warehouse-info {
-    margin-top: 8px;
-  }
-  .chips-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding: 8px;
-    background-color: whitesmoke;
-    ion-chip {
-      justify-content: center;
-    }
-  }
-}
-
-ion-chip {
-  border: 1px solid;
-}

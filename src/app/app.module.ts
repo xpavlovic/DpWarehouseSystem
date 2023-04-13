@@ -7,6 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+import { WarehouseControlComponent } from './warehouse-control/warehouse-control.component';
+import { HomePageModule } from './home/home.module';
+
 
 export const connection: IMqttServiceOptions = {
   hostname: 'broker.hivemq.com',
@@ -20,16 +23,9 @@ export const connection: IMqttServiceOptions = {
   protocol: 'ws',
   connectOnCreate: false,
 }
-/*const mqttServiceConfig: IMqttServiceOptions = {
-  username: 'xpavlovic',
-  password: 'xpavlovic',
-  keepalive: 60,
-  reconnectPeriod: 4000,
-  url: 'mqtt://broker.hivemq.com:1883',
-};*/
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MqttModule.forRoot(connection)],
+  declarations: [AppComponent, WarehouseControlComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MqttModule.forRoot(connection), HomePageModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
